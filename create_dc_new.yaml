@@ -1,0 +1,18 @@
+---
+- hosts: webservers
+  vars:
+    - ansible_ssh_host: 120.20.20.20
+  tasks:
+
+# Example vmware_cluster command from Ansible Playbooks
+  - name: Create Cluster
+    local_action:
+      module: vmware_cluster
+      hostname: "{{ ansible_ssh_host }}"
+      username: root
+      password: vmware
+      datacenter_name: "datacenter"
+      cluster_name: "cluster"
+      enable_ha: True
+      enable_drs: True
+      enable_vsan: True
